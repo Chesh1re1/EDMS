@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="PostgreSQL - postgres@127.0.0.1" uuid="385e1b82-e596-44b6-ad58-397ddf07d627">
+    <data-source source="LOCAL" name="postgres@127.0.0.1" uuid="fff64581-a3fb-4b98-9f24-0b973a63ff9c">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/postgres</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="sfrus_edms@185.72.146.141" uuid="99983033-bbb8-4b6b-898c-381736babe1b">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://185.72.146.141:5432/sfrus_edms</jdbc-url>
     </data-source>
   </component>
 </project>
