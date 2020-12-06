@@ -7,11 +7,13 @@
 <body>
 
 <h1>{{ title }}</h1>
+<hr>
 
 {% for item in doc %}
 <div>
     <p><h2>{{ item.title }}</h2></p>
     <p>Номер документа: {{ item.number }}</p>
+    <p>Контрагент: {{ item.id_contr }}</p>
     <p>Регистратор: {{ item.reg_surname }}
     {{ item.reg_name }}
     {{ item.reg_patronymic }}</p>
