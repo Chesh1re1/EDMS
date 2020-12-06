@@ -8,7 +8,7 @@ class Doc(models.Model):
     reg_surname = models.CharField(max_length=255)
     reg_name = models.CharField(max_length=255)
     reg_patronymic = models.CharField(max_length=255)
-    doc_reg_date = models.DateTimeField(auto_now_add=True)  # при auto_now_add дата и время в поле запишутся оин раз и
+    doc_reg_date = models.DateTimeField(auto_now_add=True)  # при auto_now_add дата и время в поле запишутся один раз и
                                                             # не будут изменяться
     doc_update_date = models.DateTimeField(auto_now=True)  # при auto_now дата и время в поле будут перезаписываться
                                                            # постоянно

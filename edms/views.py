@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import *
 
 
-def index(request):
-    return HttpResponse("<h1>Hello World!</h1>")
+def doc(request):
+    doc = Doc.objects.order_by('-doc_reg_date')
+    return render(request, 'edms/doc.html', {'doc': doc, 'title': 'Список документов'})
