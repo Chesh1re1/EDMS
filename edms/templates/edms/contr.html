@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
+    <caption><h2>{{ title }}</h2></caption>
+    {% for item in contr %}
+    <tr>
+        <th>Номер</th>
+        <th>Название организации</th>
+        <th>ФИО</th>
+        <th>Телефон</th>
+        <th>Адресс</th>
+        <th>Офис</th>
+    </tr>
+    <tr align="center">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>
+            {{ item.contr_surname }}
+            {{ item.contr_name }}
+            {{ item.contr_patronymic }}
+        </td>
+        <td>{{ item.number }}</td>
+        <td>{{ item.adress }}</td>
+        <td>{{ item.apartment }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

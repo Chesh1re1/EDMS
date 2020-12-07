@@ -5,24 +5,7 @@
     <title>{{ title }}</title>
 </head>
 <body>
-<!--<h1>{{ title }}</h1>
-<hr>
-
-{% for item in doc %}
-<div>
-    <p><h2>{{ item.title }}</h2></p>
-    <p>Номер документа: {{ item.number }}</p>
-    <p>Контрагент: {{ item.id_contr }}</p>
-    <p>Регистратор: {{ item.reg_surname }}
-    {{ item.reg_name }}
-    {{ item.reg_patronymic }}</p>
-    <p>Дата регистрации: {{ item.doc_reg_date|date:"d/m/Y" }}</p>
-    <p>Передано в отдел № {{ item.id_executor }}</p>
-    <hr>
-</div>
-{% endfor %}
--->
-<table border="4" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
+<table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
     <caption><h2>{{ title }}</h2></caption>
     {% for item in doc %}
     <tr>
