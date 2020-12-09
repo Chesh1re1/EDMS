@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+   .btn {
+       display: inline-block; /* Строчно-блочный элемент */
+       background: #38b420; /* Серый цвет фона */
+       color: #fff; /* Белый цвет текста */
+       padding: 1rem 1.5rem; /* Поля вокруг текста */
+       text-decoration: none; /* Убираем подчёркивание */
+       border-radius: 3px; /* Скругляем уголки */
+       font-size: medium;
+       margin-left: 15px;
+   }
+   .button{
+       text-align: center;
+       padding-top: 15px;
+   }
+    </style>
+</head>
+<body>
+<table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
+    <caption><h2>{{ doc_title }}</h2></caption>
+    {% for item in doc %}
+    <tr>
+        <th>Номер</th>
+        <th>Название</th>
+        <th>Контрагент</th>
+        <th>Регистратор</th>
+        <th>Дата регистрации</th>
+        <th>Дата изменения</th>
+        <th>Исполнитель</th>
+        <th>Комментарий</th>
+    </tr>
+    <tr align="center">
+        <td>{{ item.number }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.id_contr }}</td>
+        <td>
+            {{ item.reg_surname }}
+            {{ item.reg_name }}
+            {{ item.reg_patronymic }}
+        </td>
+        <td>{{ item.doc_reg_date|date:"d/m/Y" }}</td>
+        <td>{{ item.doc_update_date|date:"d/m/Y" }}</td>
+        <td>{{ item.id_executor }}</td>
+        <td>{{ item.comment }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
+    <caption><h2>{{ dep_title }}</h2></caption>
+    {% for item in dep %}
+    <tr>
+        <th>Номер</th>
+        <th>Наименование отдела</th>
+        <th>Руководитель отдела</th>
+        <th>Телефон</th>>
+    </tr>
+    <tr align="center">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>
+            {{ item.executor_surname }}
+            {{ item.executor_name }}
+            {{ item.executor_patronymic }}
+        </td>
+        <td>{{ item.telephone }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
+    <caption><h2>{{ contr_title }}</h2></caption>
+    {% for item in contr %}
+    <tr>
+        <th>Номер</th>
+        <th>Название организации</th>
+        <th>ФИО</th>
+        <th>Телефон</th>
+        <th>Адресс</th>
+        <th>Офис</th>
+    </tr>
+    <tr align="center">
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>
+            {{ item.contr_surname }}
+            {{ item.contr_name }}
+            {{ item.contr_patronymic }}
+        </td>
+        <td>{{ item.telephone }}</td>
+        <td>{{ item.adress }}</td>
+        <td>{{ item.apartment }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<div class = "button">
+<button onclick="document.location='doc/'", class="btn">Все документы</button>
+<button onclick="document.location='dep/'", class="btn">Все исполнители</button>
+<button onclick="document.location='contr/'", class="btn">Все контрагенты</button>
+</div>
+</body>
+</html>

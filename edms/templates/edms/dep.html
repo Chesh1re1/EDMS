@@ -12,17 +12,17 @@
         <th>Номер</th>
         <th>Наименование отдела</th>
         <th>Руководитель отдела</th>
-        <th>Телефон</th>>
+        <th>Телефон</th>
     </tr>
     <tr align="center">
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>
         <td>
-            {{ item.contr_surname }}
-            {{ item.contr_name }}
-            {{ item.contr_patronymic }}
+            {{ item.executor_surname }}
+            {{ item.executor_name }}
+            {{ item.executor_patronymic }}
         </td>
-        <td>{{ item.number }}</td>
+        <td>{{ item.telephone }}</td>
     </tr>
     {% endfor %}
 </table>

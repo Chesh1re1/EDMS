@@ -16,3 +16,19 @@ def contr(request):
 def dep(request):
     dep = Dep.objects.all()
     return render(request, 'edms/dep.html', {'dep': dep, 'title': 'Список исполнителей'})
+
+
+def index(requst):
+    doc = Doc.objects.order_by('-doc_reg_date')
+    contr = Contr.objects.all()
+    dep = Dep.objects.all()
+    context = {
+        'doc': doc,
+        'contr': contr,
+        'dep': dep,
+        'title': 'Полная информация',
+        'doc_title': 'Список документов',
+        'dep_title': 'Список исполнителей',
+        'contr_title': 'Список контрагентов'
+    }
+    return render(requst, 'edms/index.html', context=context)
