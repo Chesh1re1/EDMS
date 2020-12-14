@@ -6,6 +6,7 @@ from .models import Doc, Dep, Contr
 class DocAdmin(admin.ModelAdmin):
     list_display = ('number', 'title', 'doc_reg_date', 'id_contr', 'id_executor')
     search_fields = ('id', 'title', 'doc_reg_date', 'id_contr', 'id_executor')
+    list_filter = ('id_contr', 'id_executor')
 
 
 class DepAdmin(admin.ModelAdmin):

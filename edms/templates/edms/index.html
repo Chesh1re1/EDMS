@@ -23,7 +23,6 @@
 <body>
 <table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
     <caption><h2>{{ doc_title }}</h2></caption>
-    {% for item in doc %}
     <tr>
         <th>Номер</th>
         <th>Название</th>
@@ -34,6 +33,7 @@
         <th>Исполнитель</th>
         <th>Комментарий</th>
     </tr>
+    {% for item in doc %}
     <tr align="center">
         <td>{{ item.number }}</td>
         <td>{{ item.title }}</td>
@@ -52,13 +52,13 @@
 </table>
 <table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
     <caption><h2>{{ dep_title }}</h2></caption>
-    {% for item in dep %}
     <tr>
         <th>Номер</th>
         <th>Наименование отдела</th>
         <th>Руководитель отдела</th>
-        <th>Телефон</th>>
+        <th>Телефон</th>
     </tr>
+    {% for item in dep %}
     <tr align="center">
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>
@@ -73,7 +73,6 @@
 </table>
 <table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
     <caption><h2>{{ contr_title }}</h2></caption>
-    {% for item in contr %}
     <tr>
         <th>Номер</th>
         <th>Название организации</th>
@@ -82,6 +81,7 @@
         <th>Адресс</th>
         <th>Офис</th>
     </tr>
+    {% for item in contr %}
     <tr align="center">
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>

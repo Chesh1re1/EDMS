@@ -7,7 +7,6 @@
 <body>
 <table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
     <caption><h2>{{ title }}</h2></caption>
-    {% for item in contr %}
     <tr>
         <th>Номер</th>
         <th>Название организации</th>
@@ -16,6 +15,7 @@
         <th>Адресс</th>
         <th>Офис</th>
     </tr>
+    {% for item in contr %}
     <tr align="center">
         <td>{{ item.id }}</td>
         <td>{{ item.title }}</td>

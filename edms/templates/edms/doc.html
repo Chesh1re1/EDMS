@@ -7,7 +7,6 @@
 <body>
 <table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
     <caption><h2>{{ title }}</h2></caption>
-    {% for item in doc %}
     <tr>
         <th>Номер</th>
         <th>Название</th>
@@ -18,6 +17,7 @@
         <th>Исполнитель</th>
         <th>Комментарий</th>
     </tr>
+    {% for item in doc %}
     <tr align="center">
         <td>{{ item.number }}</td>
         <td>{{ item.title }}</td>

@@ -9,19 +9,19 @@ def doc(request):
 
 
 def contr(request):
-    contr = Contr.objects.all()
+    contr = Contr.objects.order_by('id')
     return render(request, 'edms/contr.html', {'contr': contr, 'title': 'Список контрагентов'})
 
 
 def dep(request):
-    dep = Dep.objects.all()
+    dep = Dep.objects.order_by('id')
     return render(request, 'edms/dep.html', {'dep': dep, 'title': 'Список исполнителей'})
 
 
 def index(requst):
     doc = Doc.objects.order_by('-doc_reg_date')
-    contr = Contr.objects.all()
-    dep = Dep.objects.all()
+    contr = Contr.objects.order_by('id')
+    dep = Dep.objects.order_by('id')
     context = {
         'doc': doc,
         'contr': contr,
