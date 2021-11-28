@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ title }}</title>
-</head>
-<body>
+{%  extends 'base.html' %}
+
+{% block dep %}
+<caption><h2 align="center">Список исполнителей</h2></caption>
 <table border="2" bordercolor="#000000" cellspacing="0" cellpadding="5" align=center>
-    <caption><h2>{{ title }}</h2></caption>
-    <tr>
+
+    <tr align="center">
         <th>Номер</th>
         <th>Наименование отдела</th>
         <th>Руководитель отдела</th>
@@ -26,5 +23,4 @@
     </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}

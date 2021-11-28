@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="navbar navbar-light navbar-expand-md bg-light align-content-center">
+    <a href="/" class="navbar-brand d-flex w-25 mr-auto"><img src="{% static 'edms/img/logo.png' %}" alt="logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+        <ul class="navbar-nav w-100 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="/add_doc">Добавить документ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/contr">Контрагенты</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dep">Исполнители</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/doc">Документы</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Отчет</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">За день</a>
+                    <a class="dropdown-item" href="#">За месяц</a>
+                    <a class="dropdown-item" href="#">За год</a>
+                </div>
+            </li>
+        </ul>
+        <div class="navbar-collapse collapse w-25" id="collapsingNavbar3">
+            <ul class="navbar-nav w-100 justify-content-center">
+                {% if request.user.is_authenticated %}
+                    Добро пожаловать, {{ user.username }}
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}">Выход</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Авторизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Регистрация</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

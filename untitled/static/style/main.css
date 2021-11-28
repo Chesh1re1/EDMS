@@ -10,6 +10,7 @@ body{text-align:center;}#ft{clear:both;}#doc,#doc2,#doc3,#doc4,.yui-t1,.yui-t2,.
 body, html{
 	width: 100%;
 	height: 100%;
+	text-align: center;
 }
 
 .navbar-brand{
