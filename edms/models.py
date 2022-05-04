@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Doc(models.Model):
@@ -14,6 +15,9 @@ class Doc(models.Model):
     # при auto_now дата и время в поле будут перезаписываться постоянно
     id_executor = models.ForeignKey('Dep', on_delete=models.PROTECT, verbose_name='Исполнитель', default=1)
     comment = models.TextField(blank=True, verbose_name='Комментарий')
+
+    def get_absolute_url(self):
+        return reverse('doc', kwargs={'doc_id': self.pk})
 
     class Meta:
         verbose_name = 'Документ'

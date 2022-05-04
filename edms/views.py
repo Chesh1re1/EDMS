@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.views.generic import ListView, CreateView
 from .models import *
 from .forms import DocForm, UserRegistrationForm, UserLoginForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def register(request):
@@ -13,7 +15,7 @@ def register(request):
             user = form.save()
             login(request, user)
             messages.success(request, 'Вы успешно зарегистрированы!')
-            return redirect(index)
+            return redirect('login')
         else:
             messages.error(request, 'Ошибка регистрации')
     else:
@@ -27,7 +29,7 @@ def user_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect(index)
+            return redirect('index')
     else:
         form = UserLoginForm()
     return render(request, 'edms/login.html', {'form': form})
@@ -38,40 +40,51 @@ def user_logout(request):
     return redirect(user_login)
 
 
-def doc(request):
-    doc = Doc.objects.order_by('-doc_reg_date')
-    return render(request, 'edms/doc.html', {'doc': doc, 'title': 'Список документов'})
+class AllDoc(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Doc
+    template_name = 'edms/doc.html'
+    context_object_name = 'doc'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['doc'] = Doc.objects.order_by('-doc_reg_date')
+        return context
 
 
-def contr(request):
-    contr = Contr.objects.order_by('id')
-    return render(request, 'edms/contr.html', {'contr': contr, 'title': 'Список контрагентов'})
+class AllDep(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Dep
+    template_name = 'edms/dep.html'
+    context_object_name = 'dep'
 
 
-def dep(request):
-    dep = Dep.objects.order_by('id')
-    return render(request, 'edms/dep.html', {'dep': dep, 'title': 'Список исполнителей'})
+class AllContr(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
+    model = Contr
+    template_name = 'edms/contr.html'
+    context_object_name = 'contr'
 
 
-def index(requst):
-    doc = Doc.objects.order_by('-doc_reg_date')
-    contr = Contr.objects.order_by('id')
-    dep = Dep.objects.order_by('id')
-    context = {
-        'doc': doc,
-        'contr': contr,
-        'dep': dep,
-        'title': 'Полная информация',
-        'doc_title': 'Список документов',
-        'dep_title': 'Список исполнителей',
-        'contr_title': 'Список контрагентов'
-    }
-    return render(requst, 'edms/index.html', context=context)
+class AddDoc(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('login')
+    form_class = DocForm
+    template_name = 'edms/add_doc.html'
 
 
-def add_doc(request):
-    if request.method == 'POST':
-        pass
-    else:
-        form = DocForm()
-    return render(request, 'edms/add_doc.html', {'form': form})
+class Index(ListView):
+    model = Doc
+    template_name = 'edms/index.html'
+    context_object_name = 'doc'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['doc'] = Doc.objects.order_by('-doc_reg_date')
+        context['contr'] = Contr.objects.order_by('id')
+        context['dep'] = Dep.objects.order_by('id')
+        context['title'] = 'Полная информация'
+        context['doc_title'] = 'Список документов'
+        context['dep_title'] = 'Список исполнителей'
+        context['contr_title'] = 'Список контрагентов'
+        return context
+

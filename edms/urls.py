@@ -4,11 +4,11 @@ from .views import *
 
 urlpatterns = [
     path('register/', register),
-    path('login/', user_login),
+    path('login/', user_login, name='login'),
     path('logout/', user_logout, name='logout'),
-    path('doc/', doc),
-    path('dep/', dep),
-    path('contr/', contr),
-    path('add_doc/', add_doc),
-    path('', index)
+    path('doc/', AllDoc.as_view(), name='doc'),
+    path('dep/', AllDep.as_view(), name='dep'),
+    path('contr/', AllContr.as_view(), name='contr'),
+    path('add_doc/', AddDoc.as_view(), name='add_doc'),
+    path('', Index.as_view(), name='index')
 ]

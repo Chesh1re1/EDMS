@@ -21,5 +21,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://185.72.146.141:5432/sfrus_edms</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="edms.sql" uuid="86f61095-977e-4a30-8d6e-12f57e691a43">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/edms.sql</jdbc-url>
+    </data-source>
   </component>
 </project>
