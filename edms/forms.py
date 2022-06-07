@@ -24,14 +24,14 @@ class UserRegistrationForm(UserCreationForm):
 class DocForm(forms.ModelForm):
     class Meta:
         model = Doc
-        fields = '__all__'
-
-    """
-    number = forms.IntegerField(label='Номер')
-    title = forms.CharField(label='Название')
-    id_executor = forms.ModelChoiceField(queryset=Contr.objects.all(), label='Контрагент')
-    reg_surname = forms.CharField(max_length=255, label='Фамилия регистратора')
-    reg_name = forms.CharField(max_length=255, label='Имя регистратора')
-    reg_patronymic = forms.CharField(max_length=255, label='Отчество регистратора')
-    id_contr = forms.ModelChoiceField(queryset=Dep.objects.all(), label='Исполнитель')
-    """
+        fields = ['number', 'title', 'id_contr', 'reg_surname', 'reg_name', 'reg_patronymic', 'id_executor', 'comment']
+        widgets = {
+            'number': forms.NumberInput(attrs={'class': 'form-control'}),
+            'title': forms.TextInput(attrs={'class': 'form-control'}),
+            'id_contr': forms.Select(attrs={'class': 'form-control'}),
+            'reg_surname': forms.TextInput(attrs={'class': 'form-control'}),
+            'reg_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'reg_patronymic': forms.TextInput(attrs={'class': 'form-control'}),
+            'id_executor': forms.Select(attrs={'class': 'form-control'}),
+            'comment': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+        }

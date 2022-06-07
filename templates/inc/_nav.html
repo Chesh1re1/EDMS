@@ -6,25 +6,17 @@
     </button>
     <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
         <ul class="navbar-nav w-100 justify-content-center">
-            <li class="nav-item active">
+            <li class="nav-item {% if add_doc in request.path %}active{% endif %}">
                 <a class="nav-link" href="/add_doc">Добавить документ</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if contr %}active{% endif %}">
                 <a class="nav-link" href="/contr">Контрагенты</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if dep %}active{% endif %}">
                 <a class="nav-link" href="/dep">Исполнители</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item {% if doc %}active{% endif %}">
                 <a class="nav-link" href="/doc">Документы</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Отчет</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">За день</a>
-                    <a class="dropdown-item" href="#">За месяц</a>
-                    <a class="dropdown-item" href="#">За год</a>
-                </div>
             </li>
         </ul>
         <div class="navbar-collapse collapse w-25" id="collapsingNavbar3">
@@ -35,10 +27,10 @@
                         <a href="{% url 'logout' %}">Выход</a>
                     </li>
                 {% else %}
-                    <li class="nav-item">
+                    <li class="nav-item {% if login %}active{% endif %}">
                         <a class="nav-link" href="/login">Авторизация</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if register %}active{% endif %}">
                         <a class="nav-link" href="/register">Регистрация</a>
                     </li>
                 {% endif %}

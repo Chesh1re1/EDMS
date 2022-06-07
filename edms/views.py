@@ -72,7 +72,8 @@ class AddDoc(LoginRequiredMixin, CreateView):
     template_name = 'edms/add_doc.html'
 
 
-class Index(ListView):
+class Index(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('login')
     model = Doc
     template_name = 'edms/index.html'
     context_object_name = 'doc'
